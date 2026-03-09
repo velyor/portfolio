@@ -1,0 +1,285 @@
+/* ---css card-study--- */
+.cards-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap; /* così su schermi piccoli vanno sotto */
+  padding-top: 2rem;
+  width: 100%;
+}
+
+.glare-card-container {
+  perspective: 1000px;
+}
+
+.glare-card {
+  position: relative;
+  min-width: 260px;
+  width: 100%;
+  height: 240px;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+.glare-card-content {
+  position: relative;
+  z-index: 2;
+  
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.glare-card-content h2 {
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: 600;
+  color: black;
+}
+
+.glare-card-content h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.85;
+  margin: 0.2rem 0 0.8rem;
+  color: rgb(27, 27, 27);
+}
+
+.glare-card-content p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0.3rem 0;
+}
+
+.glare-card-content strong {
+  display: block;
+  margin-top: auto;
+  font-size: 1rem;
+  color: #ffd369;
+  font-weight: 600;
+}
+
+/* effetto riflesso */
+.glare-card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(0, 0, 0, 0.6) 60%
+  );
+  background-position: var(--px, 50%) var(--py, 50%);
+  background-repeat: no-repeat;
+  background-size: 200% 200%;
+
+  mix-blend-mode: screen;
+  transition: background-position 0.15s ease;
+  background-color: rgb(197, 197, 197);
+}
+
+
+
+
+
+.cards-wrapper-1 {
+  width: 100%;
+  height: auto;
+  /*padding: 90px 20px;*/
+  /*display: flex;*/
+  flex-direction: column;
+  align-items: center;
+  position: relative;           /* serve per posizionare il titolo */
+}
+
+.cards-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;                   /* card sotto il titolo */
+}
+
+.h1-study {
+  font-size: clamp(3rem, 8vw, 9rem);
+  font-weight: 800;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 1px;
+  animation: glowElegant 4s ease-in-out infinite;
+
+  position: absolute;           /* titolo posizionato sopra le card */
+  top: 5%;                     /* regola la percentuale in base a dove vuoi posizionarlo */
+  left: 50%;
+  transform: translateX(-50%);  /* centrato orizzontalmente */
+  
+}
+
+@keyframes glowElegant {
+  0%, 100% {
+    text-shadow: 
+      0 0 6px #3a6073,
+      0 0 12px #000;
+  }
+  50% {
+    text-shadow: 
+      0 0 8px #a8c0ff,
+      0 0 20px #d9d9d9;
+  }
+}
+
+
+
+/* --- button modal ---*/
+.open-modal-btn {
+  padding: 6px 0;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.02); /* leggerissimo, quasi invisibile */
+  border: 1px solid rgba(255, 255, 255, 0.10); /* struttura minimale */
+  border-radius: 2px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  margin-top: auto; /* lo spinge in fondo */ 
+  align-self: center; /* lo centra orizzontalmente */
+}
+
+.open-modal-btn:hover {
+  background: rgba(255, 255, 255, 0.06); /* feedback chiaro ma elegante */
+  border-color: rgba(255, 255, 255, 0.20);
+  color: white;
+}
+
+
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(4px); z-index: 9998;
+}
+
+/* Contenuto */
+.modal-content {
+  background: #111;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 450px;
+  border: 1px solid #333;
+  animation: fadeIn 0.3s ease;
+  color: white;
+
+  margin-top: 50px;
+
+  
+}
+
+.close-modal-btn {
+  margin-top: 20px;
+  padding: 8px 14px;
+  background: #333;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.close-modal-btn:hover {
+  background: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+.modal-scroll {
+  max-height: 350px;           /* altezza contenuta */
+  overflow-y: auto;            /* scroll verticale */
+  padding-right: 6px;          /* spazio per scrollbar */
+  display: flex;
+  flex-direction: column;
+  gap: 22px;                   /* spazio tra sezioni */
+}
+
+/* Sezioni */
+.modal-scroll section {
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Titoli */
+.modal-scroll h3 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Testo */
+.modal-scroll p,
+.modal-scroll li {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Liste */
+.modal-scroll ul {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Scrollbar elegante */
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
