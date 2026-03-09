@@ -1,0 +1,297 @@
+
+/*--- navbar---- */
+
+.nav_bar {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+
+  /*background: linear-gradient(
+    135deg,
+    #f5f5f5 0%,
+    #e8e8e8 30%,
+    #d6d6d6 60%,
+    #ffffff 100%
+  );*/
+
+  /*
+  
+  background: linear-gradient(
+  to right,
+  #dcdcdc 0%,
+  #cfcfcf 25%,
+  #f2f2f2 50%,
+  #cfcfcf 75%,
+  #dcdcdc 100%
+);
+
+
+  */
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  color: #2c2c2c;
+
+  position: fixed;
+  /*left: 50%;
+  transform: translateX(-50%);*/
+  z-index: 9999;
+}
+
+
+
+.nav_bar > * {
+  cursor: pointer;
+}
+
+.section-navbar{
+text-align: center;
+
+}
+
+.p-navbar {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  font-weight: 400;
+  color: #2E2E2E;
+
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.6),
+    0 2px 4px rgba(0,0,0,0.15);
+}
+
+
+.section-navbar2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:30px;
+  /*margin-bottom: 15px;*/
+}
+
+
+
+.div-sottoC {
+  background-color: rgb(235, 232, 232); 
+  border: solid 1px rgb(90, 89, 89);
+  margin-top: 50px;
+  padding: 5px 30px;
+  border-radius: 10px;
+  /*width: max-content;*/
+  max-width: 700px;
+  
+  margin-right: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+
+}
+
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dev-card {
+  text-align: center;
+}
+
+.dev-icon {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.dev-title {
+  
+  font-size: 18px;
+ 
+  color: #810404;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.menuH {
+  font-family: "Cinzel", "Cormorant Garamond", serif; 
+  font-size: 1.15rem; 
+  font-weight: 600;
+  color: #7c6f5c; 
+  letter-spacing: 1.5px; 
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+  margin-top: 60px;
+}
+
+.menuH:hover {
+  color: #a18d74; 
+  transform: translateY(-1px); 
+  text-shadow: 0 1px 2px rgba(124, 111, 92, 0.4); 
+}*/
+
+.menuH {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 60px;
+
+  text-shadow: 
+    0 1px 2px rgba(255,255,255,0.35),
+    0 0 1px rgba(0,0,0,0.15);
+
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cards-container {
+  /*display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
+  max-width: 800px; /* 
+  
+  color: aliceblue;*/
+padding: 10px;
+
+}
+
+.card-wrapper {
+  /*background-color: aqua;*/
+  padding: 10px;
+  
+}
+
+.servizi-link {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;              
+  /*padding: 1rem; */         
+        
+        color: rgb(255, 254, 254);
+}
+
+.contact-link{
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;              
+  padding: 1rem;
+  color: rgb(255, 255, 255);
+  
+}
+
+.contact-link a {
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  font-family: "Cormorant Garamond", serif;
+}
+
+
+
+/* ====== TABLET: max-width 900px ====== */
+@media (max-width: 900px) {
+  .nav_bar {
+    padding: 10px 20px; 
+    gap: 15px;
+  }
+
+  .p-navbar {
+    font-size: clamp(36px, 5vw, 48px); 
+  }
+
+  .section-navbar2 {
+    gap: 20px;
+  }
+
+  .div-sottoC {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2rem;
+    padding: 4px;
+  }
+
+
+
+  .menuH {
+    font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+    margin-top: 50px;
+  }
+}
+
+/* ====== SMALL DEVICES: max-width 600px ====== */
+@media (max-width: 600px) {
+  .nav_bar {
+    gap: 10px;
+    padding: 8px 15px;
+  }
+
+  .p-navbar {
+    font-size: clamp(28px, 6vw, 36px);
+  }
+
+  .div-sottoC {
+    gap: 1.5rem;
+    padding: 3px;
+  }
+
+
+
+  .menuH {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    margin-top: 40px;
+  }
+}
+
+/* ====== VERY SMALL DEVICES: max-width 400px ====== */
+@media (max-width: 400px) {
+  .p-navbar {
+    font-size: clamp(50px, 7vw, 28px);
+  }
+
+  .div-sottoC {
+    gap: 1rem;
+    padding: 2px;
+  }
+
+  .menuH {
+    font-size: clamp(0.7rem, 4vw, 0.9rem);
+    margin-top: 35px;
+  }
+
+
+}
+

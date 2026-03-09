@@ -1,13 +1,13 @@
 import './App.css'
 
 {/* ---Section--- */}
-import HomeSection from "./component/homeSection"; 
-import About from "./component/about/about"; 
-import ProjectSection from "./component/ProjectSection/project";
-import ContactSection from "./component/contactSection/contact"; 
+import HomeSection from "./component/HomeSection/homeSection"; 
+import About from "./component/AboutSection/AboutSection"; 
+import ProjectSection from "./component/ProjectSection/ProjectSection";
+import ContactSection from "./component/ContactSection/ContactSection"; 
 
 {/* ---Import Component--- */}
-import Navbar from "./component/navbar/navbarApp"; 
+import Navbar from "./component/NavBar/navbarApp"; 
 
 
 function App() {
