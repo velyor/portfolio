@@ -73,7 +73,7 @@ const Home: React.FC = () => {
                 <p className="p-left">
                 <strong   style={{fontFamily: "'Playfair Display', serif", fontSize: "20px",  }}> Alex B.</strong>
                 <br />
-                Front-end &  Performance
+                Front-end &  Performance <br />- focused UI engineering
               </p>
             </div>
           </div>

@@ -1,0 +1,414 @@
+// ProjectSection2.module.scss
+
+$font-serif: "Cormorant Garamond", serif;
+$accent-black: #0a0a0a;
+$muted-gray: #8e8e93;
+$border-color-light: rgba(0, 0, 0, 0.1);
+
+.sectionProject2 {
+  font-family: "Inter", sans-serif;
+  color: $accent-black;
+  position: relative;
+  background-color: #ffffff;
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+
+// --- GRIGLIA E SFONDO ANIMATO ---
+.ambientBackground {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+
+  .movingOrb {
+    position: absolute;
+    top: 30%; left: 25%;
+    width: 450px; height: 450px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.015) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    animation: floatAmbient 14s infinite alternate ease-in-out;
+  }
+
+  .linesGrid {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.012) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.012) 1px, transparent 1px);
+    background-size: 120px 120px;
+  }
+}
+
+// --- TITOLI ORIGINALI ---
+.about2LeftContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  background-color: #000;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.aboutNumber {
+  font-size: clamp(38px, 5.5vw, 48px);
+  font-weight: 600;
+  opacity: 0.12;
+  color: #fff;
+  line-height: 1;
+}
+
+.aboutVertical {
+  font-size: clamp(20px, 2.5vw, 28px);
+  letter-spacing: 10px;
+  opacity: 0.55;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.about2LeftContent::after {
+  content: "";
+  height: 1px;
+  width: 120px;
+  background: #fff;
+  opacity: 0.15;
+  margin-left: 20px;
+}
+
+// --- MENU FORMATO SCRITTO RIALLINEATO E PERFETTO ---
+.menuProjectFullWidth {
+  width: 100%;
+  border-bottom: 1px solid $border-color-light; // Linea grigia globale continua
+  margin: 4rem 0 3rem 0;
+  position: relative;
+  z-index: 2;
+
+  .menuContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 2.5rem; // Spazio uniforme e moderno tra le scritte
+
+    @media (min-width: 900px) {
+      padding: 0 2rem;
+    }
+  }
+
+  .tabLink {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: $muted-gray;
+    cursor: pointer;
+    padding: 1rem 0;
+    position: relative; // Necessario per ancorare perfettamente la riga sotto
+    transition: color 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1px; // Sovrapposizione millimetrica alla riga grigia globale
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $accent-black;
+      transform: scaleX(0); // Nascosta di default
+      transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    &.active {
+      color: $accent-black;
+      font-weight: 700;
+
+      &::after {
+        transform: scaleX(1); // Si mostra adattandosi esattamente alla lunghezza della parola
+      }
+    }
+  }
+}
+
+// --- CONTENITORE GENERALIZZATO ---
+.contentWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+// --- SCROLL CONTENT CONTAINER (A DUE RIGHE) ---
+.scrollableContentContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  max-height: 840px; 
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  @media (min-width: 900px) {
+    padding: 0 2rem;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+}
+
+// --- GRIGLIA ---
+.projectGrid3Pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 1.8rem;
+  }
+}
+
+// --- CARD COMPATTE ---
+.compactCard {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(25px);
+  animation: revealCompactCard 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+  .imageFrame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f5f5f7;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .cardFooterInfo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 1rem;
+
+    .cardMeta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+
+      .cardTag {
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        color: $muted-gray;
+        text-transform: uppercase;
+      }
+
+      .cardNumber {
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 0.4rem 0;
+      color: $accent-black;
+    }
+
+    p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #55555a;
+      margin: 0 0 1rem 0;
+    }
+
+    .visitLink {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: fit-content;
+      color: $accent-black;
+      padding: 2px 0;
+
+      .linkText {
+        font-size: 0.8rem;
+        font-weight: 600;
+        position: relative;
+        display: inline-block;
+
+        .underline {
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: $accent-black;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      .arrow {
+        font-size: 0.85rem;
+        transition: transform 0.3s ease;
+        line-height: 1;
+      }
+
+      &:hover {
+        .underline {
+          transform: scaleX(1);
+        }
+        .arrow {
+          transform: translateX(3px);
+        }
+      }
+    }
+  }
+}
+
+// --- AVVISO IN LAVORAZIONE ---
+.inProgressWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+  animation: revealCompactCard 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.inProgressCard {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  width: 100%;
+  max-width: 420px;
+
+  .progressStatus {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: $muted-gray;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  h3 {
+    font-family: $font-serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $accent-black;
+    margin: 0;
+  }
+
+  .miniLine {
+    width: 20px;
+    height: 1px;
+    background-color: $accent-black;
+    margin: 1.2rem auto;
+    opacity: 0.3;
+  }
+
+  p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+  }
+}
+
+// --- ANIMAZIONI ---
+@keyframes floatAmbient {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 20px) scale(1.1); }
+}
+
+@keyframes revealCompactCard {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Media queries per ProjectSection2.module.scss
+
+@media (max-width: 1024px) {
+  .scrollableContentContainer {
+    max-height: 780px; // Riduce leggermente l'altezza massima sui tablet
+  }
+}
+
+@media (max-width: 768px) {
+  .menuProjectFullWidth {
+    margin: 2.5rem 0 2rem 0;
+
+    .menuContainer {
+      gap: 1.5rem; // Avvicina le voci del menu sugli schermi più piccoli
+      padding: 0 1rem;
+    }
+  }
+
+  .scrollableContentContainer {
+    padding: 0 1rem;
+    max-height: 720px; // Adatta l'altezza per mostrare due righe sui dispositivi mobili
+  }
+
+  .projectGrid3Pillars {
+    gap: 2rem 1.2rem; // Riduce lo spazio tra le card
+  }
+}
+
+@media (max-width: 480px) {
+  .menuProjectFullWidth {
+    .menuContainer {
+      gap: 1rem;
+    }
+
+    .tabLink {
+      font-size: 0.75rem; // Riduce leggermente il font per evitare che il menu vada a capo
+      letter-spacing: 0.08em;
+    }
+  }
+
+  .compactCard {
+    .cardFooterInfo {
+      h3 {
+        font-size: 1rem; // Ottimizza i titoli delle card per smartphone
+      }
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

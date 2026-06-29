@@ -1,81 +1,106 @@
 import React from "react";
-import {ContactForm} from "./contactForm";
+import { ContactForm } from "./contactForm";
 import styles from "./ContactSection.module.scss";
-
 import { motion } from "framer-motion";
+import { FiMail, FiPhone, FiMapPin, FiArrowRight } from "react-icons/fi";
+
+const faderUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+  }
+};
 
 const ContactSection: React.FC = () => {
   return (
-
-    <section className={styles.container1}>
-
-
-<div className={styles.projectInfo}>
-
-       {/*<h2 className={styles.projectTitle1}>Contact</h2>*/}
-              <motion.h1
-  className={styles.projectTitle1}
-  initial={{ x: 40, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
-  viewport={{ once: true, amount: 0.6 }}
-  transition={{
-    duration: 0.8,
-    ease: "easeOut",
-  }}
->
-  CONTACT
-</motion.h1>
-
-</div>
-
-
-    <section className={styles.container2}>
-
-   <div className={styles.rightCol}>
-  <h2 className={styles.contactTitle}>Get in touch</h2>
-
-  <p className={styles.contactParagraph}>
-   Per progetti, collaborazioni o opportunità professionali legate al front-end, puoi contattarmi qui. 
-   Mi interessa lavorare su interfacce curate, accessibili e ben strutturate, dove l’attenzione al 
-   dettaglio e la qualità del codice fanno davvero la differenza. Se pensi che ci possa essere un buon 
-   fit, scrivimi.
-  </p>
-
-<div className={styles.contactDetails}>
-  <a href="mailto:costa.alle111@gmail.com" className={styles.contactLink}>
-    costa.alle111@gmail.com
-  </a>
-
-  <a href="tel:+393342721529" className={styles.contactLink}>
-    +39 334 272 1529
-  </a>
-</div>
-
-
-         <div className={styles.linkContact}>
-
-           <a href="https://github.com/velyor" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/alexandru-boghian-135929390/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-
-
-           </div>
-
-
-</div>
-
-
-      {/* Colonna sinistra */}
-      <div className={styles.leftCol}>
-        <h2 className={styles.h1ContactForm}>Next Step</h2>
-        <p className={styles.pContact}>
-          Compila il modulo qui sotto, ti risponderò al più presto.
-        </p>
-
-        <ContactForm />
+    <section className={styles.contactWrapper}>
+      
+      {/* HEADER 03 CONTACT - Intatto, pulito e isolato */}
+      <div className={styles.about2LeftContent}>
+        <span className={styles.aboutNumber}>03</span>
+        <span className={styles.aboutVertical}>CONTACT</span>
       </div>
 
+      {/* LAYOUT GRID A DUE COLONNE */}
+      <div className={styles.container2}>
+        
+        {/* COLONNA SINISTRA: IMMAGINE DI SFONDO + LINK INTERATTIVI */}
+        <motion.div 
+          className={styles.rightCol} // Colonna Info con Immagine di Sfondo
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={faderUp}
+        >
+          <div className={styles.textBlock}>
+            <h2 className={styles.contactHeading}>
+              Let's build something <span className={styles.gradientText}>iconic</span>.
+            </h2>
+            <p className={styles.contactDescription}>
+               Hai un progetto, un'idea o un'opportunità di collaborazione? 
+              Scrivimi ora per strutturare insieme una soluzione ad alte performance.
+            </p>
+          </div>
 
-      </section>
+          {/* CONTATTI IPER-MODERNI: Niente card, solo interazione pura */}
+          <div className={styles.interactiveLinks}>
+            {[
+              { icon: <FiMail />, label: "Email", value: "costa.alle111@gmail.com", href: "mailto:costa.alle111@gmail.com" },
+              { icon: <FiPhone />, label: "Telefono", value: "+39 334 272 1529", href: "tel:+393342721529" },
+              { icon: <FiMapPin />, label: "Posizione", value: "Torino, Italia — Remoto", href: null }
+            ].map((item, index) => {
+              const ContentElement = item.href ? "a" : "div";
+              return (
+                <motion.div 
+                  key={index} 
+                  className={styles.interactiveRow}
+                  whileHover={{ x: 10 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                >
+                  <ContentElement 
+                    href={item.href || undefined} 
+                    className={styles.rowLink}
+                    target={item.href ? "_blank" : undefined}
+                    rel="noreferrer"
+                  >
+                    <div className={styles.rowMain}>
+                      <span className={styles.rowIcon}>{item.icon}</span>
+                      <div className={styles.rowDetails}>
+                        <span className={styles.rowLabel}>{item.label}</span>
+                        <span className={styles.rowValue}>{item.value}</span>
+                      </div>
+                    </div>
+                    {item.href && (
+                      <div className={styles.arrowContainer}>
+                        <FiArrowRight className={styles.actionArrow} />
+                      </div>
+                    )}
+                  </ContentElement>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* COLONNA DESTRA: IL FORM SU SFONDO NERO PULITO */}
+        <motion.div 
+          className={styles.leftCol}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={faderUp}
+        >
+          <div className={styles.formPane}>
+            <h3 className={styles.h1ContactForm}>Avvia una richiesta</h3>
+            <div className={styles.formContainer}>
+              <ContactForm />
+            </div>
+          </div>
+        </motion.div>
+
+      </div>
     </section>
   );
 };

@@ -13,7 +13,7 @@
   );*/
    background-color: rgb(255, 255, 255);
   height: auto;
-  margin-bottom: 100px;
+  /*margin-bottom: 100px;*/
   
 }
 
@@ -46,11 +46,11 @@
 
 /*============================ Contact =============================================*/
 
-.contact-section, .project-section, .about {
+.contact-section, .project-section{
   
   /*justify-content: center;*/
   
-  padding: 0px 15px;
+  /*padding: 0px 15px;*/
   background-color: rgb(255, 255, 255);
   
 }

@@ -1,0 +1,320 @@
+.about2{
+  width:100%;
+  min-height:700px;
+  display:grid;
+  grid-template-columns:35% 65%;
+  position:relative;
+  overflow-x: hidden;
+}
+
+/* colonna sinistra nera */
+
+.about2-left{
+  background:black;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:80px;
+}
+
+
+
+
+.titleAbout{
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1rem, 3vw, 4rem);
+    font-weight: 300;
+    color: #000000;
+    letter-spacing: 0.18em;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+
+}
+
+.about2-left-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:28px;
+  padding-top:40px;
+  padding-bottom:40px;
+  height:100%; /* si estende come colonna */
+}
+
+.about-number{
+   font-size: clamp(38px, 5.5vw, 48px);
+  font-weight:600;
+  opacity:0.12;
+  line-height:1;
+}
+
+.about-vertical{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-size: clamp(20px, 2.5vw, 28px);
+  letter-spacing:10px;   /* più premium */
+  opacity:0.55;
+  text-transform:uppercase;
+}
+
+/* Linea editoriale più lunga */
+.about2-left-content::after{
+  content:"";
+  width:1px;
+  height:120px;          /* molto più lunga */
+  background:#fff;
+  opacity:0.15;
+}
+
+
+
+
+
+
+
+/* colonna destra */
+
+.about2-right{
+  position:relative;
+  padding:50px 10%;
+  
+}
+
+/* testo sopra */
+
+.about-text {
+  max-width: 400px;
+  margin-bottom: 60px;
+
+  height: 260px; /* altezza fissa */
+  overflow: hidden; /* impedisce espansione */
+  position: relative;
+}
+
+
+.about-text h2{
+  margin-bottom:10px;
+}
+
+
+
+
+
+/* immagine centrale */
+
+
+
+
+.about-info{
+  margin-top:420px;
+  display:flex;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.info-block{
+  max-width:220px;
+}
+
+.info-block span{
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#888;
+  display:block;
+  margin-bottom:8px;
+}
+
+.info-block p{
+  font-size:14px;
+  line-height:1.6;
+  color:#333;
+}
+
+
+.about-details{
+  margin-top:380px;
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+  max-width:450px;
+}
+
+/* blocchi architettonici */
+
+.detail{
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  border-left: 2px solid black;
+}
+
+/* linea visuale */
+
+/*.line{
+  width:2px;
+  height:40px;
+  background:#111;
+  margin-top:4px;
+}*/
+
+/* testo */
+
+.detail span{
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#777;
+  display:block;
+  margin-bottom:6px;
+}
+
+.detail p{
+  font-size:14px;
+  line-height:1.6;
+  color:#333;
+}
+
+/* miglioramento lettura testo */
+
+.about-text p{
+  line-height:1.8;
+  color:#444;
+  max-width:420px;
+}
+
+/* hover immagine */
+
+.about-image{
+  width:520px;
+  height:340px;
+
+  border:2px solid red;
+
+  position:absolute;
+  left:-180px;
+  top:290px;
+
+  background:white;
+
+  transition:transform .7s ease;
+}
+
+.about-image:hover{
+  transform:scale(1.03);
+}
+
+
+
+/* ========================= */
+/* LAPTOP (max 1199px) */
+/* ========================= */
+
+@media (max-width:1199px){
+
+  .about2{
+    grid-template-columns:35% 65%;
+  }
+
+  .about-image{
+    width:460px;
+    height:300px;
+    left:-150px;
+    top:290px;
+  }
+
+  .about-text{
+    max-width:360px;
+  }
+
+  .about-info{
+    margin-top:380px;
+    gap:40px;
+  }
+
+  .about-details{
+    margin-top:380px;
+  }
+
+}
+
+
+/* ========================= */
+/* TABLET (max 991px) */
+/* ========================= */
+
+@media (max-width:991px){
+
+  .about-image{
+    width:380px;
+    height:250px;
+    left:-120px;
+    top:210px;
+  }
+
+  .about-text{
+    max-width:300px;
+  }
+
+  .about2-right{
+    padding:40px 6%;
+  }
+
+  .about-info{
+    margin-top:320px;
+    gap:30px;
+  }
+
+  .about-details{
+    margin-top:320px;
+  }
+
+}
+
+
+/* ========================= */
+/* MOBILE (max 767px) */
+/* ========================= */
+
+@media (max-width:767px){
+
+  .about2{
+    grid-template-columns:35% 65%; /* NON cambia */
+  }
+
+  .about2-right{
+    padding:30px 5%;
+  }
+
+  .about-image{
+    width:260px;
+    height:180px;
+    left:-80px;
+    top:360px;
+  }
+
+  .about-text{
+    max-width:240px;
+  }
+
+ 
+
+  .about-info{
+    margin-top:260px;
+    gap:20px;
+  }
+
+  .about-details{
+    margin-top:260px;
+  }
+
+  .info-block{
+    max-width:180px;
+  }
+
+}
+
+

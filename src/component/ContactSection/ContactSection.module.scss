@@ -1,325 +1,245 @@
-
-
-/* Layout 2 colonne */
-.container2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-  color: #222;
-  /*margin: 10px;*/
-
-    /*background: linear-gradient(
-    160deg,
-    #1a1a1a 0%,
-    #2a1f1a 100%
-  );*/
-  
-}
-
-
-
-
-
-
-
-.h1Decorazion {
-  font-family: 'Montserrat', 'Roboto', sans-serif;
-  font-weight: 800;
-  font-size: clamp(1.5rem, 5vw, 4rem);
-  line-height: 1.2;
-  letter-spacing: 0.05em;
-  color: transparent;
-  /*-webkit-text-stroke: 1px rgba(0, 0, 0, 0.4);*/
-  -webkit-text-stroke: 1px black;
-
-  text-transform: uppercase;
-  position: relative;
-  top: 40px;
-}
-
-
-
-
-
-
-
-
-
-
-
-.leftCol {
-  position: relative;
-  padding: 10px;
+.contactWrapper {
+  background-color: #000000;
+  color: #ffffff;
   font-family: "Inter", system-ui, sans-serif;
-
-  /* Nero caldo → marrone profondo */
-  /*background: linear-gradient(
-    160deg,
-    #1a1a1a 0%,
-    #141312 45%,
-    #2b241c 100%
-  );*/
-/*border: 1px solid black;*/
-margin-bottom: 10px;
-  color: #f2f2f2;
-border-radius: 10px;
-  overflow: hidden;
-}
-
-
-
-
-
-
-
-/* Form */
-.contactForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-
-.contactForm input,
-.contactForm textarea {
-  padding: 0.8rem 1rem;
-  border: 1px solid rgba(0,0,0,0.2);
-  border-radius: 6px;
-  background: #fff;
-  color: #222;
-  font-size: 0.95rem;
-}
-
-.contactForm input::placeholder,
-.contactForm textarea::placeholder {
-  color: #888;
-}
-
-
-.h1ContactForm{
-  font-size: 38px;
-  font-weight: 700;
-  color: black;
-      font-family: "Playfair Display", serif;
-}
-
-
-
-
-
-
-
-.pContact {
-font-size: 17px;
-    line-height: 1.8;
-    /* color: #1a1a1a; */
-    color: black;
-    font-weight: 400;
-    max-width: 65ch;
-    margin-bottom: 1.25rem;
-    text-wrap: pretty;
   
-}
-
-/* Colonna destra */
-.contactForm button {
-  margin-top: 0.8rem;
-  align-self: flex-start;
-
-  padding: 0.5rem 1.35rem;
-  font-size: 0.8rem;
-  font-weight: 800;
-
-  color: #000000;
-  text-decoration: none;
-
- background: linear-gradient(
-    90deg,
-    #000000 0%,
-    #fffffd 50%,
-    #000000 100%
-  );
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-
-  background-size: 200% 100%;
-  background-position: center;
-
-  transition:
-    background-position 0.5s ease,
-    box-shadow 0.35s ease,
-    transform 0.2s ease;
-
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.45);
-
-  
-}
-
-.contactForm button:hover {
-    background-position: right;
-  box-shadow:
-    0 8px 26px rgba(230, 199, 122, 0.35);
-  transform: translateY(-1px);
-
-}
-
-/* Active: ritorno naturale */
-.contactForm button:active {
-  transform: translateY(-1px);
-}
-
-.rightCol {
-  /*padding: 3.5rem;*/
-
-  color: #000000;
-
-  display: flex;
-  flex-direction: column;
-  /*justify-content: center;*/
-}
-
-.contactTitle {
-  font-size: clamp(2rem, 3vw, 3.2rem);
-  font-family: "Playfair Display", serif;
-  letter-spacing: -0.02em;
-  
-}
-
-.contactParagraph {
-    font-size: 17px;
-    line-height: 1.8;
-    /* color: #1a1a1a; */
-    color: black;
-    font-weight: 400;
-    max-width: 65ch;
-    margin-bottom: 1.25rem;
-    
-    text-wrap: pretty;
-}
-
-.contactDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 11rem;
-}
-
-.contactDetails a,
-.contactDetails span {
-  font-size: 0.95rem;
-  color: #000000;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contactDetails a:hover {
-  text-decoration: underline;
-}
-
-
-
-
-
-.linkContact {
-  display: flex;
-  gap: 32px; 
-  
-}
-
-.linkContact a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.8);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.linkContact a:hover::after {
-  width: 100%;
-}
-
-.linkContact a:hover {
-  opacity: 0.8;
-}
-
-
-.linkContact a {
   position: relative;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+}
+
+/* ==========================================================================
+   1. HEADER ORIGINALE (Preservato esattamente come richiesto)
+   ========================================================================== */
+.about2LeftContent {
+  display: flex;
+  flex-direction: row;      
+  align-items: center;
+  gap: 18px;
+  background-color: #000;   
+  padding: 40px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.aboutNumber {
+  font-size: clamp(38px, 5.5vw, 48px);
+  font-weight: 600;
+  opacity: 0.12;            
+  color: #fff;              
+  line-height: 1;
+}
+
+.aboutVertical {
+  writing-mode: horizontal-tb; 
+  transform: none;
+  font-size: clamp(20px, 2.5vw, 28px);
+  letter-spacing: 10px;
+  opacity: 0.55;             
+  color: #fff;               
   text-transform: uppercase;
-
-  color: #000000;
-  text-decoration: none;
-
-  padding-bottom: 6px;
-  transition: opacity 0.3s ease;
 }
 
+.about2LeftContent::after {
+  content: "";
+  height: 1px;
+  width: 120px;
+  background: #fff;         
+  opacity: 0.15;             
+  margin-left: 20px;
+}
 
+/* ==========================================================================
+   2. INTERFACCIA A DUE COLONNE CON IMMAGINE DI SFONDO
+   ========================================================================== */
+.container2 {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: stretch; /* Alti uguali per un look geometrico perfetto */
 
-
-
-
-
-
-
-
-/* Responsive */
-@media (max-width: 900px) {
-  .container2 {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
-  }
-  .contactGrid {
-    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
-
-
-
-.projectTitle1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(2.6rem, 4.5vw, 4.2rem);
-    font-weight: 700;
-    line-height: 1.2;
-
-    color: #111;
-
-  
-    letter-spacing: -0.01em;
-}
-
-
-.projectPara{
-font-weight: 600;
-font-size: 17px;
-}
-
-.projectInfo{
-/*padding: 10px 10px;*/
-border-bottom: 1px solid black;
-margin-bottom: 15px;
-overflow: hidden;
-}
-
-
-
-.contactDetails {
+/* --- COLONNA INFO (Sinistra, con Immagine e Overlay) --- */
+.rightCol {
+  position: relative;
+  padding: 3.5rem 3rem;
+  border-radius: 24px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 60px;
+
+  /* Immagine di sfondo premium (Dark Tech / Architecture) */
+  background-image: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Overlay scuro per contrasto assoluto */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 0;
+  }
+
+  /* Porta i contenuti sopra l'overlay */
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 576px) {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.textBlock {
+  .contactHeading {
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+
+    /* Sfumatura richiesta */
+    .gradientText {
+      background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .contactDescription {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #b3b3b3;
+    max-width: 480px;
+  }
+}
+
+/* --- LISTA INTERATTIVA SENZA CARD --- */
+.interactiveLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.interactiveRow {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.rowLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  cursor: pointer;
+
+  .rowMain {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .rowIcon {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease;
+  }
+
+  .rowDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .rowLabel {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 600;
+    }
+
+    .rowValue {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      transition: color 0.3s ease;
+    }
+  }
+
+  .arrowContainer {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    .actionArrow {
+      font-size: 1.1rem;
+      color: #fff;
+    }
+  }
+
+  /* Trigger Hover */
+  &:hover {
+    .rowIcon {
+      color: #fff;
+    }
+    .rowValue {
+      color: #fff;
+    }
+    .arrowContainer {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* --- COLONNA FORM (Destra) --- */
+.leftCol {
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 3.5rem 3rem;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 576px) {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+.formPane {
+  width: 100%;
+
+  .h1ContactForm {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 35px;
+  }
+
+  .formContainer {
+    width: 100%;
+  }
 }
 
 

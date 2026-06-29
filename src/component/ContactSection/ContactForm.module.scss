@@ -1,0 +1,266 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+  width: 100%;
+  background: transparent;
+}
+
+/* ==========================================================================
+   STRUTTURA LINEARE 
+   ========================================================================== */
+.inputField {
+  position: relative;
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-family: inherit;
+    outline: none;
+  }
+
+  textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-family: inherit;
+    outline: none;
+    
+    // RISOLTO: Rimosso padding-bottom eccessivo e regolata l'altezza riga per combaciare con la linea inferiore
+    padding: 12px 0 4px 0; 
+    line-height: 1.5;
+    min-height: 80px;
+    resize: none;
+  }
+
+  label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 1.05rem;
+    pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: left top;
+  }
+
+  .focusLine {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: #ffffff;
+    transform: scaleX(0);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: left;
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label,
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    transform: translateY(-24px) scale(0.75);
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  input:focus ~ .focusLine,
+  textarea:focus ~ .focusLine {
+    transform: scaleX(1);
+  }
+}
+
+/* ==========================================================================
+   STATO DI ERRORE EMAIL
+   ========================================================================== */
+.inputField.hasError {
+  input {
+    border-bottom-color: #ff4a4a;
+    color: #ff8080;
+  }
+  label {
+    color: rgba(255, 74, 74, 0.6) !important;
+  }
+  .focusLine {
+    background: #ff4a4a;
+  }
+  .errorMessage {
+    position: absolute;
+    left: 0;
+    bottom: -22px;
+    font-size: 0.75rem;
+    color: #ff4a4a;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+  }
+}
+
+/* ==========================================================================
+   PRIVACY CONTAINER E BORDO DI AVVISO ROSSO
+   ========================================================================== */
+.privacyContainer {
+  margin-top: -0.5rem;
+  width: 100%;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  
+  // Quando attiva l'attenzione, colora temporaneamente il testo e il box di rosso
+  &.privacyAlert {
+    .customCheckbox {
+      border-color: #ff4a4a !important;
+      background: rgba(255, 74, 74, 0.05);
+    }
+    .privacyText {
+      color: #ff8080 !important;
+    }
+  }
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .customCheckbox {
+    position: relative;
+    top: 2px;
+    min-width: 18px;
+    height: 18px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 5px;
+      top: 2px;
+      width: 5px;
+      height: 9px;
+      border: solid #000000;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  .privacyText {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.45);
+    transition: color 0.3s ease;
+  }
+
+  &:hover .customCheckbox {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  input:checked ~ .customCheckbox {
+    background: #ffffff;
+    border-color: #ffffff;
+    &::after { display: block; }
+  }
+
+  input:checked ~ .privacyText {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+/* ==========================================================================
+   BOTTONE DI INVIO (Sempre Libero)
+   ========================================================================== */
+.submitSection {
+  width: 100%;
+}
+
+.premiumSubmit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+  .btnText {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .iconCircle {
+    width: 36px;
+    height: 36px;
+    background: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .btnIcon {
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+
+    .iconCircle {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

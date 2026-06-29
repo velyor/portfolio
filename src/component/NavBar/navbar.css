@@ -1,297 +1,308 @@
-
-/*--- navbar---- */
-
-.nav_bar {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  align-items: center;
-
-  /*background: linear-gradient(
-    135deg,
-    #f5f5f5 0%,
-    #e8e8e8 30%,
-    #d6d6d6 60%,
-    #ffffff 100%
-  );*/
-
-  /*
-  
-  background: linear-gradient(
-  to right,
-  #dcdcdc 0%,
-  #cfcfcf 25%,
-  #f2f2f2 50%,
-  #cfcfcf 75%,
-  #dcdcdc 100%
-);
-
-
-  */
-
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  color: #2c2c2c;
-
+/* ==========================================================================
+   HEADER ANCORATO AI BORDI (Senza spazi vuoti esterni)
+   ========================================================================== */
+.navbar-fixed-full {
   position: fixed;
-  /*left: 50%;
-  transform: translateX(-50%);*/
-  z-index: 9999;
-}
-
-
-
-.nav_bar > * {
-  cursor: pointer;
-}
-
-.section-navbar{
-text-align: center;
-
-}
-
-.p-navbar {
-  font-family: 'Playfair Display', serif;
-  font-size: 60px;
-  font-weight: 400;
-  color: #2E2E2E;
-
-  text-shadow:
-    0 1px 0 rgba(255,255,255,0.6),
-    0 2px 4px rgba(0,0,0,0.15);
-}
-
-
-.section-navbar2 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap:30px;
-  /*margin-bottom: 15px;*/
+  padding: 0 3rem;
+  z-index: 99999;
+  background: rgba(8, 8, 9, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-
-
-.div-sottoC {
-  background-color: rgb(235, 232, 232); 
-  border: solid 1px rgb(90, 89, 89);
-  margin-top: 50px;
-  padding: 5px 30px;
-  border-radius: 10px;
-  /*width: max-content;*/
-  max-width: 700px;
-  
-  margin-right: auto;
-
+/* ==========================================================================
+   CONTA SEZIONI ANIMATO KINETIC (Sottile ed elegante)
+   ========================================================================== */
+.nav-counter-modern {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3rem;
-
-}
-
-
-.cards-container {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 14px;
+  height: 100%;
 }
 
-.dev-card {
-  text-align: center;
+.digit-slider {
+  height: 20px;
+  width: 22px;
+  overflow: hidden;
+  position: relative;
 }
 
-.dev-icon {
+.current-index {
   display: block;
-  font-size: 1.5rem;
-  margin-bottom: 8px;
-}
-
-.dev-title {
-  
-  font-size: 18px;
- 
-  color: #810404;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*.menuH {
-  font-family: "Cinzel", "Cormorant Garamond", serif; 
-  font-size: 1.15rem; 
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #ffffff;
   font-weight: 600;
-  color: #7c6f5c; 
-  letter-spacing: 1.5px; 
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
-  margin-top: 60px;
+  letter-spacing: 1px;
 }
 
-.menuH:hover {
-  color: #a18d74; 
-  transform: translateY(-1px); 
-  text-shadow: 0 1px 2px rgba(124, 111, 92, 0.4); 
-}*/
+.counter-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.15);
+}
 
-.menuH {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.15rem;
+.current-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
   font-weight: 500;
-  color: #000000;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   HAMBURGER INTERATTIVO CON EFFETTO ALLARGAMENTO LINEA
+   ========================================================================== */
+.luxury-burger-trigger {
+  background: none;
+  border: none;
   cursor: pointer;
-  margin-top: 60px;
-
-  text-shadow: 
-    0 1px 2px rgba(255,255,255,0.35),
-    0 0 1px rgba(0,0,0,0.15);
-
-  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.cards-container {
-  /*display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; 
-  max-width: 800px; /* 
-  
-  color: aliceblue;*/
-padding: 10px;
-
+.burger-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  font-weight: 600;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
-.card-wrapper {
-  /*background-color: aqua;*/
-  padding: 10px;
-  
+.burger-lines-wrap {
+  width: 28px;
+  height: 8px;
+  position: relative;
 }
 
-.servizi-link {
+.burger-line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.line-top { top: 0; }
+.line-bottom { bottom: 0; width: 55%; right: 0; }
+
+/* La riga inferiore si allunga al 100% su hover */
+.luxury-burger-trigger:hover .line-bottom {
+  width: 100%;
+}
+
+.luxury-burger-trigger:hover .burger-text {
+  opacity: 1;
+}
+
+/* Trasformazione in X a Menu Aperto */
+.luxury-burger-trigger.is-active .line-top {
+  transform: translateY(3.5px) rotate(45deg);
+}
+.luxury-burger-trigger.is-active .line-bottom {
+  width: 100% !important;
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   OVERLAY INTERNO AD ESPANSIONE CIRCOLARE (Dal punto del menu)
+   ========================================================================== */
+.wow-menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #09090a;
+  z-index: 99998;
   display: flex;
   flex-direction: column;
-  gap: 10px;              
-  /*padding: 1rem; */         
-        
-        color: rgb(255, 254, 254);
+  justify-content: center;
+  padding: 0 10vw;
+  box-sizing: border-box;
+  /* Ombra morbida durante l'effetto di clip espansivo */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
-.contact-link{
+.wow-menu-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* PANNELLO SINISTRO - Orologio minimale ed Email */
+.wow-panel-left {
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  padding-right: 5rem;
   display: flex;
-  flex-direction: column; 
-  gap: 10px;              
-  padding: 1rem;
-  color: rgb(255, 255, 255);
-  
+  flex-direction: column;
+  gap: 4.5rem;
 }
 
-.contact-link a {
-  cursor: pointer;
-  color: rgb(0, 0, 0);
-  font-family: "Cormorant Garamond", serif;
+.editorial-info-block {
+  display: flex;
+  flex-direction: column;
 }
 
-
-
-/* ====== TABLET: max-width 900px ====== */
-@media (max-width: 900px) {
-  .nav_bar {
-    padding: 10px 20px; 
-    gap: 15px;
-  }
-
-  .p-navbar {
-    font-size: clamp(36px, 5vw, 48px); 
-  }
-
-  .section-navbar2 {
-    gap: 20px;
-  }
-
-  .div-sottoC {
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    gap: 2rem;
-    padding: 4px;
-  }
-
-
-
-  .menuH {
-    font-size: clamp(0.9rem, 1.5vw, 1.15rem);
-    margin-top: 50px;
-  }
+.info-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
 }
 
-/* ====== SMALL DEVICES: max-width 600px ====== */
-@media (max-width: 600px) {
-  .nav_bar {
-    gap: 10px;
-    padding: 8px 15px;
-  }
-
-  .p-navbar {
-    font-size: clamp(28px, 6vw, 36px);
-  }
-
-  .div-sottoC {
-    gap: 1.5rem;
-    padding: 3px;
-  }
-
-
-
-  .menuH {
-    font-size: clamp(0.8rem, 3vw, 1rem);
-    margin-top: 40px;
-  }
+.advanced-clock-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
 }
 
-/* ====== VERY SMALL DEVICES: max-width 400px ====== */
-@media (max-width: 400px) {
-  .p-navbar {
-    font-size: clamp(50px, 7vw, 28px);
-  }
-
-  .div-sottoC {
-    gap: 1rem;
-    padding: 2px;
-  }
-
-  .menuH {
-    font-size: clamp(0.7rem, 4vw, 0.9rem);
-    margin-top: 35px;
-  }
-
-
+.clock-digits {
+  font-size: 3.8rem;
+  font-weight: 200;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
+.clock-tz {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: monospace;
+}
+
+.direct-mail-link {
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  width: fit-content;
+}
+
+.direct-mail-link:hover {
+  color: rgba(255, 255, 255, 0.6);
+  transform: translateX(4px);
+}
+
+.reply-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* PANNELLO DESTRO - Navigazione Massimalista */
+.wow-panel-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.wow-link-container {
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  padding: 1.2rem 1rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wow-nav-link {
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.wow-link-num {
+  font-size: 0.8rem;
+  font-family: monospace;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.wow-link-title {
+  font-size: 3.8rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover sui Link del Menu */
+.wow-link-container:hover {
+  padding-left: 2.5rem;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.wow-link-container:hover .wow-link-title {
+  color: #ffffff;
+  font-style: italic;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.wow-link-container:hover .wow-link-num {
+  color: #ffffff;
+}
+
+.wow-hover-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.01) 0%, transparent 100%);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.active-bg { opacity: 1; }
+
+.wow-nav-link.wow-active .wow-link-title {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+/* FOOTER IN BASSO NELL'OVERLAY */
+.wow-menu-footer {
+  position: absolute;
+  bottom: 3rem;
+  left: 10vw;
+  right: 10vw;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding-top: 1.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   RESPONSIVE ADATTIVO
+   ========================================================================== */
+@media (max-width: 992px) {
+  .navbar-fixed-full { padding: 0 1.5rem; height: 70px; }
+  .wow-menu-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .wow-panel-left { display: none; }
+  .wow-link-title { font-size: 2.6rem; }
+}
