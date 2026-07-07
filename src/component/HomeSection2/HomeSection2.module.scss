@@ -3,7 +3,7 @@ $gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #f
 $font-serif: "Cormorant Garamond", serif;
 $bg-dark: #050505;
 
-// Breakpoints per tutte le configurazioni mobile/desktop
+// Breakpoints
 $bp-xs: 375px;   
 $bp-sm: 576px;   
 $bp-md: 768px;   
@@ -16,19 +16,19 @@ $bp-xxl: 1920px;
   flex-direction: column;
   width: 100%;
   background-color: #000;
-  overflow-x: hidden; // Previene qualunque overflow orizzontale residuo
+  overflow: hidden;
 }
 
 // --- 1. IDENTITY SECTION ---
 .identitySection {
   height: 100vh;
+  height: 100dvh;
   width: 100%;
   background-color: $bg-dark;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 2; // Rimane sopra lo sfondo fisso della sezione successiva
 
   .container {
     display: flex;
@@ -168,28 +168,19 @@ $bp-xxl: 1920px;
 // --- 2. STRUCTURE SECTION ---
 .structureSection {
   height: 100vh;
+  height: 100dvh;
   width: 100%;
+  background-image: url("./img.home/img.home3.jpg");
+  background-size: cover;
+  background-position: center;
   position: relative;
-  z-index: 1;
+  
+  // Di default (mobile) lo sfondo scorre normalmente evitando distorsioni o bug
+  background-attachment: scroll;
 
-  // Questa maschera taglia lo sfondo fixed precisamente sui bordi di questa sezione,
-  // impedendo lo spazio bianco a destra e collisioni con la sezione sopra.
-  clip-path: inset(0 0 0 0);
-
-  .fixedBg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("./img.home/img.home3.jpg");
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    
-    // Ottimizzazioni per non far sfarfallare lo sfondo durante lo scroll touch su smartphone
-    transform: translateZ(0);
-    will-change: transform;
+  // Solo sui dispositivi desktop (che supportano l'hover del mouse) attiviamo l'effetto fisso originale
+  @media (hover: hover) {
+    background-attachment: fixed;
   }
 
   .overlay {
