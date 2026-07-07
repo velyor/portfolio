@@ -103,10 +103,14 @@
 
 .textBlock {
   .contactHeading {
-    font-size: clamp(2.4rem, 4vw, 3.8rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+   font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.12em;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
     margin-bottom: 20px;
 
     /* Sfumatura richiesta */
@@ -231,10 +235,15 @@
   width: 100%;
 
   .h1ContactForm {
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: 35px;
+font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.2rem, 4vw, 1rem);
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.12em;
+    
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
 
   .formContainer {

@@ -1,56 +1,128 @@
-.contactForm {
+$font-sans: 'Inter', sans-serif;
+$gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+$error-color: #ff453a;
+
+// ==========================================
+// BLOCCO CONTENITORE FISSO (PROTETTO)
+// ==========================================
+.wizardContainer {
+  width: 100%;
+  max-width: 600px;
+  min-height: 480px; /* Altezza bloccata per assorbire l'HUD e la privacy spostata senza sbalzi */
+  margin: 0 auto;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
-  width: 100%;
-  background: transparent;
 }
 
-/* ==========================================================================
-   STRUTTURA LINEARE 
-   ========================================================================== */
+.contactForm {
+  width: 100%;
+  flex: 1;
+}
+
+.stepWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+/* PROGRESS BAR */
+.progressTrack {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  
+  .progressBar {
+    width: 75%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.06);
+    position: relative;
+    border-radius: 2px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 50%;
+      background: $gold-gradient;
+      transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &.halfFull::after {
+      width: 100%;
+    }
+  }
+
+  .stepCounter {
+    font-family: $font-sans;
+    font-size: 0.85rem;
+    color: #8e8e93;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  h3 {
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #8e8e93;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+}
+
+/* SCHEDA 1: STILE CAMPI INPUT TRADIZIONALI */
 .inputField {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 
   input {
     width: 100%;
-    padding: 12px 0;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    font-size: 1.05rem;
-    font-family: inherit;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.8rem 0;
+    font-family: $font-sans;
+    font-size: 1.1rem;
+    color: #fff;
     outline: none;
-  }
-
-  textarea {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    font-size: 1.05rem;
-    font-family: inherit;
-    outline: none;
-    
-    // RISOLTO: Rimosso padding-bottom eccessivo e regolata l'altezza riga per combaciare con la linea inferiore
-    padding: 12px 0 4px 0; 
-    line-height: 1.5;
-    min-height: 80px;
-    resize: none;
+    font-weight: 300;
   }
 
   label {
     position: absolute;
     left: 0;
-    top: 12px;
-    color: rgba(255, 255, 255, 0.35);
-    font-size: 1.05rem;
+    top: 0.8rem;
+    color: #636366;
+    font-size: 1.1rem;
+    font-weight: 300;
     pointer-events: none;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), font-size 0.3s ease, color 0.3s ease;
     transform-origin: left top;
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.7rem) scale(0.75);
+    color: #fff;
   }
 
   .focusLine {
@@ -58,193 +130,379 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 1.5px;
-    background: #ffffff;
+    height: 1px;
+    background: $gold-gradient;
     transform: scaleX(0);
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-origin: left;
+    transform-origin: center center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  input:focus + label,
-  input:not(:placeholder-shown) + label,
-  textarea:focus + label,
-  textarea:not(:placeholder-shown) + label {
-    transform: translateY(-24px) scale(0.75);
-    color: #ffffff;
-    letter-spacing: 0.05em;
-    font-weight: 600;
-  }
+  input:focus ~ .focusLine { transform: scaleX(1); }
 
-  input:focus ~ .focusLine,
-  textarea:focus ~ .focusLine {
-    transform: scaleX(1);
+  &.hasError {
+    input { border-bottom-color: $error-color; }
+    label { color: $error-color; }
   }
 }
 
-/* ==========================================================================
-   STATO DI ERRORE EMAIL
-   ========================================================================== */
-.inputField.hasError {
-  input {
-    border-bottom-color: #ff4a4a;
-    color: #ff8080;
-  }
-  label {
-    color: rgba(255, 74, 74, 0.6) !important;
-  }
-  .focusLine {
-    background: #ff4a4a;
-  }
-  .errorMessage {
-    position: absolute;
-    left: 0;
-    bottom: -22px;
-    font-size: 0.75rem;
-    color: #ff4a4a;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-weight: 500;
-  }
-}
-
-/* ==========================================================================
-   PRIVACY CONTAINER E BORDO DI AVVISO ROSSO
-   ========================================================================== */
-.privacyContainer {
-  margin-top: -0.5rem;
-  width: 100%;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  
-  // Quando attiva l'attenzione, colora temporaneamente il testo e il box di rosso
-  &.privacyAlert {
-    .customCheckbox {
-      border-color: #ff4a4a !important;
-      background: rgba(255, 74, 74, 0.05);
-    }
-    .privacyText {
-      color: #ff8080 !important;
-    }
-  }
-}
-
-.checkboxLabel {
+.errorMessage {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  cursor: pointer;
-  user-select: none;
+  align-items: center;
+  gap: 0.4rem;
+  color: $error-color;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  position: absolute;
+  bottom: -1.5rem;
+}
 
-  input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+// ==========================================
+// SCHEDA 2: RE-DESIGN TOTALE - CONSOLE HUD CYBERPUNK
+// ==========================================
+.cyberMessageConsole {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:focus-within {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.02);
+  }
+
+  .consoleHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $font-sans;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 0.6rem;
+
+    .badgeNode {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #636366;
+      
+      .nodeIcon {
+        font-size: 0.8rem;
+        animation: pulseNode 2s infinite ease-in-out;
+      }
+    }
+
+    .analysisLabel {
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: $font-sans;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    resize: none;
+
+    &::placeholder {
+      color: #3a3a3c;
+    }
+  }
+
+  .consoleFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 0.8rem;
+
+    .liveTrackBar {
+      width: 60%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 1px;
+      overflow: hidden;
+
+      .fillTrack {
+        height: 100%;
+        background: $gold-gradient;
+        width: 0;
+        transition: width 0.2s ease;
+      }
+    }
+
+    .counterText {
+      font-family: $font-sans;
+      font-size: 0.72rem;
+      color: #48484a;
+      font-weight: 500;
+    }
+  }
+}
+
+// ==========================================
+// COMPONENTE PRIVACY (INTEGRATO IN SCHEDA 1)
+// ==========================================
+.privacyContainer {
+  margin-top: 0.5rem;
+
+  .checkboxLabel {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    cursor: pointer;
+    user-select: none;
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
   }
 
   .customCheckbox {
-    position: relative;
-    top: 2px;
-    min-width: 18px;
+    width: 18px;
     height: 18px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 3px;
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
     transition: all 0.3s ease;
 
     &::after {
       content: "";
       position: absolute;
-      display: none;
-      left: 5px;
-      top: 2px;
-      width: 5px;
-      height: 9px;
-      border: solid #000000;
+      left: 5px; top: 2px;
+      width: 4px; height: 8px;
+      border: solid #000;
       border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
+      transform: rotate(45deg) scale(0);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
+  }
+
+  .checkboxLabel input:checked ~ .customCheckbox {
+    background: $gold-gradient;
+    border-color: transparent;
+    &::after { transform: rotate(45deg) scale(1); }
   }
 
   .privacyText {
     font-size: 0.85rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.45);
-    transition: color 0.3s ease;
+    color: #8e8e93;
+    line-height: 1.5;
+    font-weight: 300;
   }
 
-  &:hover .customCheckbox {
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-
-  input:checked ~ .customCheckbox {
-    background: #ffffff;
-    border-color: #ffffff;
-    &::after { display: block; }
-  }
-
-  input:checked ~ .privacyText {
-    color: rgba(255, 255, 255, 0.85);
+  &.privacyAlert {
+    .customCheckbox { border-color: $error-color; box-shadow: 0 0 10px rgba(255, 69, 58, 0.15); }
+    .privacyText { color: $error-color; }
   }
 }
 
-/* ==========================================================================
-   BOTTONE DI INVIO (Sempre Libero)
-   ========================================================================== */
-.submitSection {
-  width: 100%;
-}
-
-.premiumSubmit {
-  width: 100%;
+/* BOTTONI DI AZIONE */
+.actionsRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 18px;
-  background: #ffffff;
+  width: 100%;
+  margin-top: auto; 
+}
+
+.backBtn {
+  background: transparent;
   border: none;
-  border-radius: 12px;
+  color: #636366;
+  font-family: $font-sans;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease, transform 0.2s ease;
 
-  .btnText {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #000000;
-  }
-
-  .iconCircle {
-    width: 36px;
-    height: 36px;
-    background: #000000;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-    .btnIcon {
-      color: #ffffff;
-      font-size: 1.05rem;
-    }
-  }
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.95);
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-
-    .iconCircle {
-      transform: rotate(-45deg);
-    }
-  }
-
-  &:active {
-    transform: translateY(0);
+  &:hover { 
+    color: #fff;
+    transform: translateX(-3px);
   }
 }
 
+.premiumSubmit {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 2rem;
+  color: #fff;
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-left: auto;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+
+  .iconCircle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    svg { font-size: 0.85rem; }
+  }
+
+  &:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.02);
+    .iconCircle { transform: translateX(4px); }
+  }
+}
+
+.futuristicSubmit {
+  background: #fff;
+  border: none;
+  padding: 0.85rem 2.2rem;
+  color: #000;
+  font-family: $font-sans;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+  .iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .arrowIcon {
+      font-size: 1rem;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .spinnerIcon {
+      font-size: 1rem;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #f4f4f4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(255, 255, 255, 0.18);
+    
+    .arrowIcon { transform: translateX(3px); }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+// ==========================================
+// SCHERMATA DI SUCCESSO (CON ICONA IN ORO PURO)
+// ==========================================
+.successBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  .successIcon {
+    font-size: 4rem;
+    // Forzatura gradiente dorato sull'icona SVG di spunta
+    background: $gold-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    // Aggiunge un alone dorato soffuso sotto l'icona
+    filter: drop-shadow(0px 6px 16px rgba(191, 149, 63, 0.35)); 
+  }
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 0.8rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #8e8e93;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 0 2.5rem 0;
+    font-weight: 300;
+  }
+
+  .resetBtn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: $font-sans;
+    font-size: 0.85rem;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+
+    &:hover { opacity: 1; }
+  }
+}
+
+/* ANIMAZIONI EXTRA GLOBALI */
+.shake {
+  animation: shakeAnim 0.4s ease-in-out;
+}
+
+@keyframes shakeAnim {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes pulseNode {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 
 

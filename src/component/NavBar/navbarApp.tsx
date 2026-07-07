@@ -124,7 +124,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 <div className="editorial-info-block">
                   <span className="info-tag">Direct Line</span>
                   <a href="mailto:tuamail@esempio.com" className="direct-mail-link">
-                    tuamail@esempio.com
+                    alexboghian.employment@gmail.com
                   </a>
                   <p className="reply-text">Per nuove opportunità e richieste di collaborazione.</p>
                 </div>

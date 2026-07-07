@@ -23,7 +23,7 @@ const servizi: Servizio[] = [
   {
     id: "dev",
     numero: "01",
-    titolo: "Sviluppo Web High-End",
+    titolo: "Soluzione Web Completa",
     sottotitolo: "NEXT.JS ARCHITECTURES",
     desc: "Realizzo la tua presenza online da zero. Un sito moderno, veloce e facile da usare per i tuoi clienti.",
     icon: <Code2 size={18} strokeWidth={1} />,
@@ -72,10 +72,16 @@ export default function ServiziSection() {
         
         {/* HEADER NEUTRO */}
         <div className={styles.sectionHeader}>
+
+
           <div className={styles.badge}>
-            <Terminal size={11} className={styles.badgeIcon} />
-            <span>Capabilities & Infrastructure</span>
-          </div>
+  <Terminal size={11} className={styles.badgeIcon} />
+  <span className={styles.badgeText}>
+    Capabilities & Infrastructure
+  </span>
+</div>
+
+
           <h2 className={styles.mainTitle}>
             Servizi che fanno la <span>differenza</span>
           </h2>

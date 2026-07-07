@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import GoldLogo from '../GoldLogoSection/GoldLogoSection'; // Import del logo modulare
 import styles from "./HomeSection2.module.scss";
 
 export const HomeSection2 = () => {
@@ -25,10 +26,9 @@ export const HomeSection2 = () => {
       <div className={styles.identitySection}>
         <div className={styles.container}>
           
-          {/* LOGO IMPONENTE */}
-          <div className={styles.premiumLogoContainer}>
-            <div className={styles.goldHalo}></div>
-            <span className={styles.vSymbol}>V</span>
+          {/* WRAPPER PER MANTENERE IL MARGINE E L'ANIMAZIONE DEL LOGO NELLA HOME */}
+          <div className={styles.homeLogoWrapper}>
+            <GoldLogo />
           </div>
           
           {/* PROFESSIONE SINGOLA */}

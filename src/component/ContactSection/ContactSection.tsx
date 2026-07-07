@@ -47,9 +47,9 @@ const ContactSection: React.FC = () => {
           {/* CONTATTI IPER-MODERNI: Niente card, solo interazione pura */}
           <div className={styles.interactiveLinks}>
             {[
-              { icon: <FiMail />, label: "Email", value: "costa.alle111@gmail.com", href: "mailto:costa.alle111@gmail.com" },
+              { icon: <FiMail />, label: "Email", value: "alexboghian.employment@gmail.com", href: "mailto:alexboghian.employment@gmail.com" },
               { icon: <FiPhone />, label: "Telefono", value: "+39 334 272 1529", href: "tel:+393342721529" },
-              { icon: <FiMapPin />, label: "Posizione", value: "Torino, Italia — Remoto", href: null }
+              { icon: <FiMapPin />, label: "Posizione", value: "Torino, Italia", href: null }
             ].map((item, index) => {
               const ContentElement = item.href ? "a" : "div";
               return (
@@ -93,7 +93,7 @@ const ContactSection: React.FC = () => {
           variants={faderUp}
         >
           <div className={styles.formPane}>
-            <h3 className={styles.h1ContactForm}>Avvia una richiesta</h3>
+            
             <div className={styles.formContainer}>
               <ContactForm />
             </div>

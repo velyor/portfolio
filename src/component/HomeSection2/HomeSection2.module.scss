@@ -1,5 +1,3 @@
-// HomeSection2.module.scss
-
 // VARIABILI RE-IMPOSTATE
 $gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
 $font-serif: "Cormorant Garamond", serif;
@@ -44,51 +42,12 @@ $bp-xxl: 1920px;
     @media (min-width: $bp-md) { padding: 2rem; }
   }
 
-  // --- LOGO SCALABILE ---
-  .premiumLogoContainer {
-    position: relative;
-    width: 95px; 
-    height: 95px;
+  // --- WRAPPER DEL NUOVO LOGO: GESTISCE ANIMAZIONE E SPAZIATURA NELLA HERO ---
+  .homeLogoWrapper {
     margin-bottom: 3.5rem; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
     animation: scaleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
-    @media (min-width: $bp-sm) { width: 110px; height: 110px; margin-bottom: 4rem; }
-    @media (min-width: $bp-md) { width: 130px; height: 130px; margin-bottom: 5rem; }
-    @media (min-width: $bp-lg) { width: 140px; height: 140px; margin-bottom: 6rem; }
-    @media (min-width: $bp-xxl) { width: 160px; height: 160px; margin-bottom: 7.5rem; }
-
-    .goldHalo {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 1px solid transparent;
-      background: $gold-gradient;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-      mask-composite: exclude;
-      border-radius: 50%;
-      opacity: 0.8;
-      transform: scale(1.05);
-    }
-
-    .vSymbol {
-      font-family: $font-serif;
-      font-size: 3.8rem; 
-      background: $gold-gradient;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 300;
-      line-height: 1;
-      z-index: 2;
-
-      @media (min-width: $bp-sm) { font-size: 4.4rem; }
-      @media (min-width: $bp-md) { font-size: 5.2rem; }
-      @media (min-width: $bp-lg) { font-size: 5.5rem; }
-      @media (min-width: $bp-xxl) { font-size: 6.5rem; }
-    }
+  
   }
 
   // --- METADATI PROFESSIONE ---
@@ -212,14 +171,14 @@ $bp-xxl: 1920px;
   }
 }
 
-// --- 2. STRUCTURE SECTION (RIPRISTINATA) ---
+// --- 2. STRUCTURE SECTION ---
 .structureSection {
   height: 100vh;
   width: 100%;
   background-image: url("./img.home/img.home3.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; // Parallasse nativo originario funzionante
+  background-attachment: fixed; 
   position: relative;
 
   .overlay {
