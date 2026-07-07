@@ -16,7 +16,7 @@ $bp-xxl: 1920px;
   flex-direction: column;
   width: 100%;
   background-color: #000;
-  overflow: hidden;
+  overflow-x: hidden; // Previene qualunque overflow orizzontale residuo
 }
 
 // --- 1. IDENTITY SECTION ---
@@ -28,7 +28,7 @@ $bp-xxl: 1920px;
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 2; // Sta sopra l'effetto fixed della sezione successiva
+  z-index: 2; // Rimane sopra lo sfondo fisso della sezione successiva
 
   .container {
     display: flex;
@@ -43,13 +43,11 @@ $bp-xxl: 1920px;
     @media (min-width: $bp-md) { padding: 2rem; }
   }
 
-  // --- WRAPPER DEL NUOVO LOGO: GESTISCE ANIMAZIONE E SPAZIATURA NELLA HERO ---
   .homeLogoWrapper {
     margin-bottom: 3.5rem; 
     animation: scaleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  // --- METADATI PROFESSIONE ---
   .metaProfession {
     display: flex;
     align-items: center;
@@ -74,7 +72,6 @@ $bp-xxl: 1920px;
     }
   }
 
-  // --- TITOLO MAIUSCOLO SPAZIATO ---
   .titleWrapper {
     margin-bottom: 2.5rem;
     animation: smoothFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
@@ -99,7 +96,6 @@ $bp-xxl: 1920px;
     }
   }
 
-  // --- SOTTOTITOLO ---
   .subtitle {
     font-size: 0.75rem;
     letter-spacing: 0.15em;
@@ -116,7 +112,6 @@ $bp-xxl: 1920px;
     @media (min-width: $bp-xxl) { font-size: 1rem; max-width: 750px; }
   }
 
-  // --- LOGICA DI SCROLL TIPOGRAFICO ---
   .premiumScroll {
     position: absolute;
     bottom: 2rem;
@@ -175,9 +170,10 @@ $bp-xxl: 1920px;
   height: 100vh;
   width: 100%;
   position: relative;
-  
-  // Vecchio trucco CSS infallibile per creare finestre fixed ritagliate
-  clip: rect(0, auto, auto, 0);
+  z-index: 1;
+
+  // Questa maschera taglia lo sfondo fixed precisamente sui bordi di questa sezione,
+  // impedendo lo spazio bianco a destra e collisioni con la sezione sopra.
   clip-path: inset(0 0 0 0);
 
   .fixedBg {
@@ -190,7 +186,8 @@ $bp-xxl: 1920px;
     background-size: cover;
     background-position: center;
     z-index: -1;
-    // Ottimizzazione hardware anti-sfarfallio per mobile
+    
+    // Ottimizzazioni per non far sfarfallare lo sfondo durante lo scroll touch su smartphone
     transform: translateZ(0);
     will-change: transform;
   }

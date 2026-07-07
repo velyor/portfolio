@@ -61,9 +61,9 @@ export const HomeSection2 = () => {
         </div>
       </div>
 
-      {/* SEZIONE INFERIORE: IMMAGINE IN PARALLASSE */}
+      {/* SEZIONE INFERIORE: STRUTTURA CON SFONDO FISSO */}
       <div className={styles.structureSection}>
-        {/* Strato dedicato allo sfondo fisso nativo */}
+        {/* Il div che tiene l'immagine incollata allo schermo */}
         <div className={styles.fixedBg}></div>
         
         <div className={styles.overlay}>
