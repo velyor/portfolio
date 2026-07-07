@@ -28,6 +28,7 @@ $bp-xxl: 1920px;
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 2; // Sta sopra l'effetto fixed della sezione successiva
 
   .container {
     display: flex;
@@ -46,8 +47,6 @@ $bp-xxl: 1920px;
   .homeLogoWrapper {
     margin-bottom: 3.5rem; 
     animation: scaleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-
-  
   }
 
   // --- METADATI PROFESSIONE ---
@@ -175,11 +174,26 @@ $bp-xxl: 1920px;
 .structureSection {
   height: 100vh;
   width: 100%;
-  background-image: url("./img.home/img.home3.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; 
   position: relative;
+  
+  // Vecchio trucco CSS infallibile per creare finestre fixed ritagliate
+  clip: rect(0, auto, auto, 0);
+  clip-path: inset(0 0 0 0);
+
+  .fixedBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./img.home/img.home3.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    // Ottimizzazione hardware anti-sfarfallio per mobile
+    transform: translateZ(0);
+    will-change: transform;
+  }
 
   .overlay {
     position: absolute;

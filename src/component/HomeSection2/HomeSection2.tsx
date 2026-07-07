@@ -63,6 +63,9 @@ export const HomeSection2 = () => {
 
       {/* SEZIONE INFERIORE: IMMAGINE IN PARALLASSE */}
       <div className={styles.structureSection}>
+        {/* Strato dedicato allo sfondo fisso nativo */}
+        <div className={styles.fixedBg}></div>
+        
         <div className={styles.overlay}>
           <div className={styles.content}>
             <h2 className={styles.heroText}>STRUTTURA</h2>
