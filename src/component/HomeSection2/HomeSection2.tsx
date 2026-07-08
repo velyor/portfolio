@@ -56,6 +56,9 @@ export const HomeSection2 = () => {
 
       {/* SEZIONE INFERIORE: STRUTTURA */}
       <div className={styles.structureSection}>
+        {/* Il div che tiene l'immagine bloccata */}
+        <div className={styles.fixedBg}></div>
+        
         <div className={styles.overlay}>
           <div className={styles.content}>
             <h2 className={styles.heroText}>STRUTTURA</h2>

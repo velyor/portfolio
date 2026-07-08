@@ -29,6 +29,7 @@ $bp-xxl: 1920px;
   align-items: center;
   justify-content: center;
   position: relative;
+  z-index: 2;
 
   .container {
     display: flex;
@@ -170,17 +171,39 @@ $bp-xxl: 1920px;
   height: 100vh;
   height: 100dvh;
   width: 100%;
-  background-image: url("./img.home/img.home3.jpg");
-  background-size: cover;
-  background-position: center;
   position: relative;
-  
-  // Di default (mobile) lo sfondo scorre normalmente evitando distorsioni o bug
-  background-attachment: scroll;
+  z-index: 1;
+  clip-path: inset(0 0 0 0);
 
-  // Solo sui dispositivi desktop (che supportano l'hover del mouse) attiviamo l'effetto fisso originale
   @media (hover: hover) {
+    background-image: url("./img.home/img.home3.jpg");
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
+  }
+
+  .fixedBg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background-image: url("./img.home/img.home3.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+
+    @media (hover: none) {
+      position: fixed;
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    @media (hover: hover) {
+      display: none;
+    }
   }
 
   .overlay {
