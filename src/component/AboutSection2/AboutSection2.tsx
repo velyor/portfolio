@@ -110,7 +110,7 @@ trasformo idee in soluzioni affidabili, veloci e semplici da usare.`;
         ========================= */}
         <div className="about-details">
 
-          <Info />
+          < Info />
 
         </div>
 

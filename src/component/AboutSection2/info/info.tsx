@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./info.module.scss";
 
 const sections = [
@@ -30,7 +30,8 @@ export default function Info() {
 
   const handleNavClick = (index) => {
     setActiveIndex(index);
-    if (window.innerWidth <= 768) {
+    // Ora apre la scheda su tutti i dispositivi inferiori o uguali a 1024px (cellulari e tablet standard)
+    if (window.innerWidth <= 1024) {
       setIsDrawerOpen(true);
     }
   };
@@ -72,11 +73,13 @@ export default function Info() {
       </div>
 
       {/* SCHEDA SOVRAPPOSTA LUXURY DARK */}
-      <div className={`${styles.drawerOverlay} ${isDrawerOpen ? styles.drawerVisible : ""}`} onClick={() => setIsDrawerOpen(false)}>
+      <div 
+        className={`${styles.drawerOverlay} ${isDrawerOpen ? styles.drawerVisible : ""}`} 
+        onClick={() => setIsDrawerOpen(false)}
+      >
         <div className={styles.drawerContent} onClick={(e) => e.stopPropagation()}>
           
           <div className={styles.drawerInnerBody}>
-            {/* Header ultra-minimalista */}
             <div className={styles.metaHeader}>
               <span className={styles.specTag}>{sections[activeIndex].tag}</span>
               <span className={styles.slideIndex}>[ 0{activeIndex + 1} ]</span>
@@ -89,7 +92,6 @@ export default function Info() {
             <p>{sections[activeIndex].text}</p>
           </div>
           
-          {/* INTERFACCIA DI CHIUSURA DESTRUTTURATA ED ELEGANTE */}
           <div className={styles.actionFooter}>
             <button className={styles.premiumCloseBtn} onClick={() => setIsDrawerOpen(false)}>
               <span className={styles.btnText}>DISMISS</span>

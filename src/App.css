@@ -1,5 +1,30 @@
 
+/* ==========================================================================
+   SCUDO ANNULLA-OVERFLOW: Blocca le fuoriuscite delle animazioni
+   ========================================================================== */
+html, 
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Taglia categoricamente il ghost scroll orizzontale */
+  margin: 0;
+  padding: 0;
+}
 
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Mette in totale sicurezza l'applicazione React */
+  position: relative;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Taglia le animazioni di Framer Motion dentro le sezioni */
+}
 /*================================= ABOUT ==========================================*/
 
 

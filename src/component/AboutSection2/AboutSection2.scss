@@ -23,15 +23,20 @@
 
 .titleAbout{
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(1rem, 3vw, 4rem);
-    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 4rem);
+    font-weight: 600;
     color: #000000;
     letter-spacing: 0.18em;
     margin: 0;
     line-height: 1;
     text-transform: uppercase;
     margin-bottom: 15px;
+}
 
+.about-text p{
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  color:#444;
+  max-width:420px;
 }
 
 .about2-left-content{
@@ -140,7 +145,7 @@
   display:flex;
   flex-direction:column;
   gap:40px;
-  max-width:450px;
+  
 }
 
 /* blocchi architettonici */
@@ -178,13 +183,8 @@
   color:#333;
 }
 
-/* miglioramento lettura testo */
 
-.about-text p{
-  line-height:1.8;
-  color:#444;
-  max-width:420px;
-}
+
 
 /* hover immagine */
 
@@ -293,7 +293,7 @@
     width:260px;
     height:180px;
     left:-80px;
-    top:360px;
+    top:280px;
   }
 
   .about-text{
@@ -308,7 +308,7 @@
   }
 
   .about-details{
-    margin-top:260px;
+    margin-top:110px;
   }
 
   .info-block{

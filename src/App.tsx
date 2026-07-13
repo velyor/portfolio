@@ -14,27 +14,18 @@ import Navbar from "./component/NavBar/navbarApp";
 import Servizi1 from "./component/servizzi/ServiziSection"; 
 
 function App() {
-
-  /* ============  ACTIVE SECTION DETECTION (Rilevamento della sezione attiva)========= */
   const [activeSection, setActiveSection] = useState<
     "home" | "about" | "project" | "contact"
   >("home");
 
   useEffect(() => {
-
-    // seleziona tutte le sezioni con id
     const sections = document.querySelectorAll("section[id]");
 
     const observer = new IntersectionObserver(
       (entries) => {
-
         entries.forEach((entry) => {
-
-          // se la sezione è visibile nel viewport
           if (entry.isIntersecting) {
             const id = entry.target.id;
-
-            // aggiorna lo stato solo se l'id è valido
             if (
               id === "home" ||
               id === "about" ||
@@ -44,64 +35,51 @@ function App() {
               setActiveSection(id);
             }
           }
-
         });
-
       },
-      {
-        threshold: 0.3, // 60% della sezione visibile per considerarla attiva
-      }
+      { threshold: 0.3 }
     );
 
-    // inizia a osservare ogni sezione
     sections.forEach((section) => observer.observe(section));
 
-    // cleanup (importante per evitare memory leak)
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-
-  }, 
-  
-  []);
+  }, []);
 
   return (
     <>
-<header>
-      <Navbar activeSection={activeSection} />
-</header>
+      <header>
+        <Navbar activeSection={activeSection} />
+      </header>
 
-<main>
+      <main>
+        {/* Rimossa la section duplicata: HomeSection2 gestisce già il suo tag section con id="home" */}
+        <HomeSection2 />
 
-  {/*---  HOME SECTION ---*/}
-  <section className="container" id="home">
-    <HomeSection2 />
-  </section>
+        {/*--- ABOUT SECTION ---*/}
+        <section className="about1" id="about">
+          <About2 />
+          <Servizi1 />
+        </section>
 
-  {/*---  ABOUT SECTION ---*/}
-  <section className="about1" id="about">
-    <About2 />
+        {/*--- PROJECT SECTION ---*/}
+        <section className="project-section" id="project">
+          <div className="container_cardP">
+            <ProjectSection />
+          </div>
+        </section>
 
-    <Servizi1 />
-  </section>
+        {/*--- CONTACT SECTION ---*/}
+        <section className="contact-section" id="contact">
+          <div className="container_contact"> {/* Consigliato un wrapper interno protettivo */}
+            <ContactSection />
+          </div>
+        </section>
+      </main>
 
-  {/*---  PROJECT SECTION ---*/}
-  <section className="project-section" id="project">
-    <div className="container_cardP">
-      <ProjectSection />
-    </div>
-  </section>
-
-  {/*---  CONTACT SECTION ---*/}
-  <section className="contact-section" id="contact">
-    <ContactSection />
-  </section>
-
-  
-  <Footer />
-
-  </main>
-
+      {/* IL FOOTER ORA È FUORI DAL MAIN: Struttura semantica corretta al 100% */}
+      <Footer />
     </>
   );
 }
