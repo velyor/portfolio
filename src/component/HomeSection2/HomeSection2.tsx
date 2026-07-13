@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import GoldLogo from '../GoldLogoSection/GoldLogoSection'; 
 import styles from "./HomeSection2.module.scss";
 
 export const HomeSection2 = () => {
   const [scrolled, setScrolled] = useState(false);
+  const structureRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,57 +20,75 @@ export const HomeSection2 = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <section className={styles.home}>
+  // Tracciamo lo scroll specificamente all'interno della sezione "Struttura"
+  const { scrollYProgress } = useScroll({
+    target: structureRef,
+    offset: ["start end", "end start"] // Parte quando la sezione appare in fondo e finisce quando esce in alto
+  });
 
-      {/* SEZIONE SUPERIORE: IDENTITY */}
-      <div className={styles.identitySection}>
+  // Trasformazioni fluide legate allo scroll (funzionano divinamente anche su mobile)
+  // Sostituisce il background-attachment fisso simulando una parallasse controllata hardware
+  const yBg = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+  const scaleBg = useTransform(scrollYProgress, [0, 1], [1.12, 1.02]);
+
+  return (
+    <section id="home" className={styles.home}>
+
+      {/* ========================= HERO / IDENTITÀ PRINCIPALE ========================= */}
+      <header className={styles.identitySection}>
         <div className={styles.container}>
           <div className={styles.homeLogoWrapper}>
             <GoldLogo />
           </div>
-          
+
           <div className={styles.metaProfession}>
             <span className={styles.brandLabel}>FRONT-END DEVELOPER</span>
           </div>
-          
+
           <div className={styles.titleWrapper}>
-            <h2 className={styles.mainTitle}>CENTERED IDENTITY</h2>
+            <h1 className={styles.mainTitle}>CENTERED IDENTITY</h1>
           </div>
-          
+
           <p className={styles.subtitle}>
-            Sviluppo interfacce web fluide e reattive, curando ogni dettaglio visivo e prestazionale.
+            Sviluppo interfacce web fluide e reattive,
+            curando ogni dettaglio visivo e prestazionale.
           </p>
         </div>
 
         <div className={`${styles.premiumScroll} ${scrolled ? styles.hidden : ""}`}>
           <div className={styles.scrollTextContainer}>
-            <span className={styles.letter}>S</span>
-            <span className={styles.letter}>C</span>
-            <span className={styles.letter}>R</span>
-            <span className={styles.letter}>O</span>
-            <span className={styles.letter}>L</span>
-            <span className={styles.letter}>L</span>
+            {["S", "C", "R", "O", "L", "L"].map((l, i) => (
+              <span key={i} className={styles.letter}>{l}</span>
+            ))}
           </div>
           <div className={styles.laserLine}></div>
         </div>
-      </div>
+      </header>
 
-      {/* SEZIONE INFERIORE: STRUTTURA */}
-      <div className={styles.structureSection}>
-        {/* Il div che tiene l'immagine bloccata */}
-        <div className={styles.fixedBg}></div>
+      {/* ========================= SEZIONE STRUTTURA CON PARALLASSE NATIVA ========================= */}
+      <article ref={structureRef} className={styles.structureSection}>
         
+        {/* L'immagine si muove dinamicamente basandosi sulla percentuale di scroll */}
+        <motion.div 
+          className={styles.fixedBg}
+          style={{ 
+            y: yBg, 
+            scale: scaleBg 
+          }}
+        />
+
         <div className={styles.overlay}>
           <div className={styles.content}>
             <h2 className={styles.heroText}>STRUTTURA</h2>
             <div className={styles.lineSeparator}></div>
             <p className={styles.quote}>
-              Codice pulito, architetture scalabili e performance ottimizzate.
+              Codice pulito, architetture scalabili e
+              performance ottimizzate.
             </p>
           </div>
         </div>
-      </div>
+
+      </article>
 
     </section>
   );

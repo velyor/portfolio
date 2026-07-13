@@ -159,8 +159,8 @@ $bp-md: 768px;
 
 .drawerOverlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 30px; left: 0;
+  height: 100vh;
   background-color: rgba(4, 4, 6, 0.4); 
   backdrop-filter: blur(20px); // Sfumatura profonda vitrea
   -webkit-backdrop-filter: blur(20px);

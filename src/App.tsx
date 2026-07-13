@@ -1,43 +1,29 @@
 import './App.css'
 import { useState, useEffect } from "react";
 
-/* =========================
-   Sections
-========================= */
+/*===== Section =====*/
 import { HomeSection2 } from "./component/HomeSection2/HomeSection2";
-
 import About2 from "./component/AboutSection2/AboutSection2"; 
 import ProjectSection from "./component/ProjectSection2/ProjectSection2";
 import ContactSection from "./component/ContactSection/ContactSection"; 
 
 import Footer from "./component/FooterSection/FooterSection";
-
-import Servizi1 from "./component/servizzi/ServiziSection"; 
-/* =========================
-   Components
-========================= */
 import Navbar from "./component/NavBar/navbarApp"; 
+
+/*===== Component Section =====*/
+import Servizi1 from "./component/servizzi/ServiziSection"; 
 
 function App() {
 
-  /* =========================
-     GLOBAL STATE
-     - tiene traccia della sezione attiva
-     - usato dalla Navbar
-  ========================= */
+  /* ============  ACTIVE SECTION DETECTION (Rilevamento della sezione attiva)========= */
   const [activeSection, setActiveSection] = useState<
     "home" | "about" | "project" | "contact"
   >("home");
 
-  /* =========================
-     INTERSECTION OBSERVER
-     - osserva le sezioni nel viewport
-     - aggiorna automaticamente activeSection
-  ========================= */
   useEffect(() => {
 
     // seleziona tutte le sezioni con id
-    const sections = document.querySelectorAll("div[id]");
+    const sections = document.querySelectorAll("section[id]");
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -75,59 +61,48 @@ function App() {
       sections.forEach((section) => observer.unobserve(section));
     };
 
-  }, []);
+  }, 
+  
+  []);
 
   return (
-    <div>
-
-      {/* =========================
-         NAVBAR
-         - riceve la sezione attiva
-         - si aggiorna dinamicamente
-      ========================= */}
+    <>
+<header>
       <Navbar activeSection={activeSection} />
+</header>
 
-      {/* =========================
-         HOME SECTION
-      ========================= */}
-      <div className="container" id="home">
-        <HomeSection2 />
-      </div>
+<main>
 
+  {/*---  HOME SECTION ---*/}
+  <section className="container" id="home">
+    <HomeSection2 />
+  </section>
 
+  {/*---  ABOUT SECTION ---*/}
+  <section className="about1" id="about">
+    <About2 />
 
-      {/* =========================
-         ABOUT SECTION
-      ========================= */}
-      <div className="about1" id="about">
-        <About2 />
-      </div>
+    <Servizi1 />
+  </section>
 
-<Servizi1 />
-
-
-      {/* =========================
-         PROJECT SECTION
-      ========================= */}
-      <div className="project-section" id="project">
-        <div className="container_cardP">
-          <ProjectSection />
-        </div>
-      </div>
-
-      {/* =========================
-         CONTACT SECTION
-      ========================= */}
-      <div className="contact-section" id="contact">
-        <ContactSection />
-      </div>
-
-      {/* =========================
-         FOOTER
-      ========================= */}
-  
-      <Footer />
+  {/*---  PROJECT SECTION ---*/}
+  <section className="project-section" id="project">
+    <div className="container_cardP">
+      <ProjectSection />
     </div>
+  </section>
+
+  {/*---  CONTACT SECTION ---*/}
+  <section className="contact-section" id="contact">
+    <ContactSection />
+  </section>
+
+  
+  <Footer />
+
+  </main>
+
+    </>
   );
 }
 

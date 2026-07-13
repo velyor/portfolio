@@ -45,8 +45,7 @@
 
 
 /*============================ Contact =============================================*/
-
-.contact-section, .project-section{
+ .project-section{
   
   /*justify-content: center;*/
   
@@ -55,6 +54,9 @@
   
 }
 
+.contact-section{
+  background-color: black;
+}
 
 
 /*===================================== FOOTER ===============================================*/
